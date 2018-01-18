@@ -79,6 +79,16 @@ addForm.addEventListener('submit', function(e) {
   bookName.textContent = value;
   deleteBtn.textContent = ' delete';
 
+  bookName.className = 'name'; //overwrite existing class
+  deleteBtn.className = 'delete'; //overwrite existing class
+  bookName.classList.add('name');
+  deleteBtn.classList.add('delete');
+
+  console.log(bookName.setAttribute('class', 'name2'));
+  console.log(bookName.getAttribute('class'));
+  console.log(bookName.hasAttribute('class'));
+  console.log(bookName.removeAttribute('class'));
+
   li.appendChild(bookName);
   li.appendChild(deleteBtn);
   list.appendChild(li);
