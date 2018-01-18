@@ -66,3 +66,10 @@ list.addEventListener('click', function(e) {
     list.removeChild(e.target.parentElement);
   }
 });
+
+var addForm = document.forms['add-book'];
+addForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  var value = addForm.querySelector('input[type="text"]').value;
+  console.log(value);
+});
