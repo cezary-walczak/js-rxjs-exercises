@@ -17,6 +17,9 @@ console.log(wmf); //return only first element
 var books = document.querySelectorAll('#book-list li .name');
 console.log(books); //return collection
 
-Array.from(books).forEach(function(book) {
-  console.log(book);
+books.forEach(function(book) {
+  book.textContent += ' (book title)';
 });
+
+var bookList = document.querySelector('#book-list');
+bookList.innerHTML += '<p>Books and more books...</p>';
