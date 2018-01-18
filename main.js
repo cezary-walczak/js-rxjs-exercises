@@ -43,4 +43,26 @@ console.log('book-list next sibling is:', bookList.nextElementSibling);
 console.log('book-list previous sibling is:', bookList.previousSibling); //include linebreaks
 console.log('book-list previous sibling is:', bookList.previousElementSibling);
 
-bookList.previousElementSibling.querySelector('p').innerHTML += '<br>Too cool for every one else'
+bookList.previousElementSibling.querySelector('p').innerHTML += '<br>Too cool for every one else';
+
+var h2 = document.querySelector('#book-list h2');
+h2.addEventListener('click', function(e) {
+  console.log(e);
+  console.log(e.target);
+});
+
+// var btns = document.querySelectorAll('#book-list .delete');
+// btns.forEach(function(btn) {
+//   btn.addEventListener('click', function(e) {
+//     e,preventDefault();
+//     var li = e.target.parentElement;
+//     li.parentNode.removeChild(li);
+//   });
+// });
+
+var list = document.querySelector('#book-list ul');
+list.addEventListener('click', function(e) {
+  if(e.target.className == 'delete') {
+    list.removeChild(e.target.parentElement);
+  }
+});
