@@ -71,5 +71,15 @@ var addForm = document.forms['add-book'];
 addForm.addEventListener('submit', function(e) {
   e.preventDefault();
   var value = addForm.querySelector('input[type="text"]').value;
-  console.log(value);
+
+  var li = document.createElement('li');
+  var bookName = document.createElement('span');
+  var deleteBtn = document.createElement('span');
+
+  bookName.textContent = value;
+  deleteBtn.textContent = ' delete';
+
+  li.appendChild(bookName);
+  li.appendChild(deleteBtn);
+  list.appendChild(li);
 });
