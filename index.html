@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>js-rxjs-exercises</title>
+		<title>js-rxjs-exercises</title>
   </head>
   <body>
   	<div id="wrapper">
@@ -42,8 +42,33 @@
 				<br>
 	    	<input type="text" placeholder="Add a book..." />
 	    	<button>Add</button>
-	    </form>
-    </div>
+			</form>
+			<div id="tabbed-content">
+				<ul class="tabs">
+					<li data-trgt="#about" class="active">About</li>
+					<li data-trgt="#contact">Contact</li>
+				</ul>
+				<div class="panel active" id="about">
+					<p>Content for about tab...</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id nunc porta urna ornare rhoncus. Ut convallis ante at.</p>
+				</div>
+				<div class="panel" id="contact">
+					<p>Content for contact tab...</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id nunc porta urna ornare rhoncus. Ut convallis ante at.</p>
+				</div>
+			</div>
+		</div>
+		<style>
+			#tabbed-content li{
+				display: inline-block;
+			}
+			#tabbed-content .panel{
+				display: none;
+			}
+			#tabbed-content .panel.active{
+				display: block;
+			}
+		</style>
     <script src="main.js"></script>
   </body>
 </html>
