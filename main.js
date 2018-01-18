@@ -23,3 +23,10 @@ books.forEach(function(book) {
 
 var bookList = document.querySelector('#book-list');
 bookList.innerHTML += '<p>Books and more books...</p>';
+
+console.log('#page-banner node type is:', banner.nodeType); //1
+console.log('#page-banner node name is:', banner.nodeName); //DIV
+console.log('#page-banner has child nodes:', banner.hasChildNodes()); //true
+
+var clonedBanner = banner.cloneNode(true); //passing true for nested element
+console.log(clonedBanner);
