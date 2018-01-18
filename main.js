@@ -30,3 +30,17 @@ console.log('#page-banner has child nodes:', banner.hasChildNodes()); //true
 
 var clonedBanner = banner.cloneNode(true); //passing true for nested element
 console.log(clonedBanner);
+
+console.log('book-list parent node is:', bookList.parentNode);
+console.log('book-list parent node of parent node is:', bookList.parentElement.parentElement);
+
+console.log('book-list child node is:', bookList.childNodes); //include linebreaks
+console.log('book-list child is:', bookList.children);
+
+console.log('book-list next sibling is:', bookList.nextSibling); //include linebreaks
+console.log('book-list next sibling is:', bookList.nextElementSibling);
+
+console.log('book-list previous sibling is:', bookList.previousSibling); //include linebreaks
+console.log('book-list previous sibling is:', bookList.previousElementSibling);
+
+bookList.previousElementSibling.querySelector('p').innerHTML += '<br>Too cool for every one else'
