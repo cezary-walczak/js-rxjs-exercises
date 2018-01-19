@@ -78,5 +78,20 @@ age: ${7+20}`);
   for(let city of cities) {
     console.log(city); //iterating over values
   }
-}
 
+  var ninja = ['Shaun', 'black', 29, 'male'];
+  var [name, belt='black', ...elements] = ninja;
+  console.log(name);
+  console.log(belt);
+  console.log(...elements);
+
+  var ninjas = {
+    name: 'Shaun',
+    belt: 'black',
+    age: 30
+  };
+  var {name: nm, belt: bl, age: ag} = ninjas; //: sth - we have to uses aliases when defined
+  console.log(nm);
+  console.log(bl);
+  console.log(ag);
+}
