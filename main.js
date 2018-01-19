@@ -70,4 +70,13 @@ age: ${7+20}`);
     }
   };
   ninja.chop(5);
+
+  var cities = ['London', 'Paris', 'Berlin'];
+  for(let city in cities) {
+    console.log(cities[city]); //iterating over keys
+  }
+  for(let city of cities) {
+    console.log(city); //iterating over values
+  }
 }
+
