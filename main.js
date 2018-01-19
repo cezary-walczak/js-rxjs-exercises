@@ -31,7 +31,7 @@ window.onload = function() {
   var nums1 = [1, 2, 3];
   var nums2 = [...nums1, 4, 5, 6];
   console.log(nums2);
-  var nums = [3, 5, 7]
+  var nums = [3, 5, 7];
   function addNums(a, b, c) {
     console.log(a + b + c);
   }
@@ -42,7 +42,13 @@ window.onload = function() {
   console.log(temp);
   function logNinja(name, age) {
     console.log(`name: ${name}, 
-age: ${7+20}`)
+age: ${7+20}`);
   }
-  logNinja("Shaun", 28)
+  logNinja("Shaun", 28);
+
+  var str = 'hello ';
+  console.log(str.repeat(5));
+  console.log(str.startsWith('el', 1)); //return booleans
+  console.log(str.endsWith('lo', str.length - 1)); //return booleans
+  console.log(str.includes('hell')); //return booleans
 }
