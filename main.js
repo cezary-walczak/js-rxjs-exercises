@@ -51,4 +51,15 @@ age: ${7+20}`);
   console.log(str.startsWith('el', 1)); //return booleans
   console.log(str.endsWith('lo', str.length - 1)); //return booleans
   console.log(str.includes('hell')); //return booleans
+
+  var name = "Shaun";
+  var belt = "black";
+  var ninja = {
+    name, 
+    belt,
+    chop(x) {
+      console.log(`You chopped enemies ${x} times`);
+    }
+  };
+  ninja.chop(5);
 }
