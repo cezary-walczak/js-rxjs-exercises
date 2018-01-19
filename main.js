@@ -20,4 +20,9 @@ window.onload = function() {
       console.log(y);
     };
   }
+
+  function log(name='Shaun', belt='black', age=28) {
+    console.log(name, belt, age);
+  }
+  log();
 }
