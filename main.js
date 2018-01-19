@@ -126,4 +126,39 @@ age: ${7+20}`);
   }
   let developer = new Developer('Ryu');
   console.log(developer.getID());
+
+  // export default
+  let name = 'Shaun';
+  export default name;
+  // export named module
+  let name = 'Shaun';
+  let belt = 'black';
+  let ninja = {
+    name: 'Shaun',
+    belt: 'black'
+  }
+  export {name, belt, ninja} // exported modules are hoisted
+  // export functions and classes
+  export function greet(message) {
+    console.log(message);
+  };
+  export class greetMessage{
+    constructor() {
+      console.log('constructor');
+    }
+    greet() {
+      console.log('greet function');
+    }
+  };
+  // import modules
+  import ninjaName from './module1.js' // any valid name
+  import {name as nm, belt as bl, ninja} from './module2.js'
+  import {greet, greetMessage} from './module3.js'
+  console.log(`${nm} have ${bl} belt`);
+  // nm = 'Ryu'; // variables are read-only
+  ninja.name = 'Ryu'; // propreties of object can be changed
+  console.log(ninja.name);
+  greet('Hello World');
+  let greetings = new greetMessage();
+  greetings.greet();
 }
