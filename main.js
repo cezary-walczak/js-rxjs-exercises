@@ -69,7 +69,7 @@ age: ${7+20}`);
       }, 1000);
     }
   };
-  ninja.chop(5);
+  // ninja.chop(5);
 
   var cities = ['London', 'Paris', 'Berlin'];
   for(let city in cities) {
@@ -94,4 +94,36 @@ age: ${7+20}`);
   console.log(nm);
   console.log(bl);
   console.log(ag);
+
+  class Ninja { //classes are function that are not hoisted and can store only methods
+    constructor(name) {
+      this.name = name;
+      console.log(name + ' ninja constructor');
+    }
+    static staticMethod() {
+      console.log(name + ' ninja static method');
+    }
+    prototypeMethod() {
+      console.log(name + ' ninja prototype method');
+    }
+    getID() {
+      return 10;
+    }
+  }
+  let netninja = new Ninja('Shaun');
+  Ninja.staticMethod('Shaun');
+  netninja.prototypeMethod('Shaun');
+
+  class Developer extends Ninja {
+    constructor(name) {
+      super(name); // call parent constructor before subclass constructor
+      console.log(name + ' developer constructor');
+    }
+    getID() {
+      // return 50;
+      return super.getID();
+    }
+  }
+  let developer = new Developer('Ryu');
+  console.log(developer.getID());
 }
