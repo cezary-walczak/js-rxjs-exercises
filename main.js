@@ -36,4 +36,13 @@ window.onload = function() {
     console.log(a + b + c);
   }
   addNums(...nums);
+
+  var temp = `Hello
+              ES6`;
+  console.log(temp);
+  function logNinja(name, age) {
+    console.log(`name: ${name}, 
+age: ${7+20}`)
+  }
+  logNinja("Shaun", 28)
 }
