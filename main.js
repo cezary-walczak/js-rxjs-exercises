@@ -175,4 +175,29 @@ age: ${7+20}`);
   var refinedNinjas = new Set(ninjas);
   ninjas = [...refinedNinjas];
   console.log(ninjas);
+
+  let ninjaMap = new Map();
+  ninjaMap.set('name', 'Shaun');
+  ninjaMap.set('belt', 'black');
+  ninjaMap.set('age', 30);
+  console.log(ninjaMap.get('name'));
+  let ninja3 = {};
+  ninjaMap.set(ninja3, 10);
+  console.log(ninjaMap.get(ninja3));
+  ninjaMap.delete(ninja3);
+  // ninjaMap.clear();
+  console.log(ninjaMap.has(ninja3));
+  console.log(ninjaMap.size);
+  for(let key of ninjaMap.keys()) {
+    console.log(key);
+  }
+  for(let value of ninjaMap.values()) {
+    console.log(value);
+  }
+  for(let entry of ninjaMap.entries()) {
+    console.log(entry);
+  }
+  for(let [key, value] of ninjaMap.entries()) {
+    console.log(`${key} -> ${value}`);
+  }
 }
