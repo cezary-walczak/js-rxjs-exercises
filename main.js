@@ -126,7 +126,7 @@ age: ${7+20}`);
   }
   let developer = new Developer('Ryu');
   console.log(developer.getID());
-
+/*
   // export default
   let name = 'Shaun';
   export default name;
@@ -161,4 +161,18 @@ age: ${7+20}`);
   greet('Hello World');
   let greetings = new greetMessage();
   greetings.greet();
+*/
+  let ninja1 = {}
+  let ninja2 = {}
+  let names = new Set(['Shaun', 'Ryu', 'Yoshi', 'Ryu']).add('Yoshi').add(ninja1);
+  names.add('Shaun').add(ninja2);
+  names.delete('Yoshi'); //return boolean
+  // names.clear();
+  console.log(names.has('Ryu'));
+  console.log(names);
+  console.log(names.size);
+  var ninjas = ['Shaun', 'Ryu', 'Yoshi', 'Ryu', 'Yoshi', ninja1, ninja2];
+  var refinedNinjas = new Set(ninjas);
+  ninjas = [...refinedNinjas];
+  console.log(ninjas);
 }
