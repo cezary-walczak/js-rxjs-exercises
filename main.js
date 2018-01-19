@@ -52,13 +52,21 @@ age: ${7+20}`);
   console.log(str.endsWith('lo', str.length - 1)); //return booleans
   console.log(str.includes('hell')); //return booleans
 
+  var greeting = name => console.log(`Hello ${name}`);
+  greeting('Shaun');
+
   var name = "Shaun";
   var belt = "black";
   var ninja = {
     name, 
     belt,
     chop(x) {
-      console.log(`You chopped enemies ${x} times`);
+      window.setInterval(() => {
+        if(x > 0) {
+          console.log(this.name + ' chopped the enemy');
+          x--
+        }
+      }, 1000);
     }
   };
   ninja.chop(5);
