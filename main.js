@@ -12,7 +12,42 @@ window.onload = function() {
 }
 
 $(document).ready(function() {
-  $.get('posts.json', function(data) {
+  function callback(data) {
     console.log(data);
+  }
+  $.get('posts.json', callback);
+
+
+  function handleError(jqXHR, textStatus, error) {
+    console.log(error);
+  }
+
+  $.ajax({
+    type: 'GET',
+    url: 'posts.json',
+    success: callbackPosts,
+    error: handleError
   });
+
+  function callbackPosts(data) {
+    console.log(data);
+    $.ajax({
+      type: 'GET',
+      url: 'tags.json',
+      success: callbackTags,
+      error: handleError
+    });
+  }
+
+  function callbackTags(data) {
+    console.log(data);
+    $.ajax({
+      type: 'GET',
+      url: 'users.json',
+      success: function(data) {
+        console.log(data);
+      },
+      error: handleError
+    });
+  }
 });
