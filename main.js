@@ -74,32 +74,55 @@ window.onload = function() {
 
   var promise = get('posts.json')
   .then(function(posts) {
-    console.log(posts);
+    // console.log(posts);
     return get('tags.json');
   })
   .then(function(tags) {
-    console.log(tags);
+    // console.log(tags);
     return get('users.json');
   })
   .then(function(users) {
-    console.log(users);
+    // console.log(users);
   })
   .catch(function(error) {
-    console.log(error);
+    // console.log(error);
   });
 }
 
 $(document).ready(function() {
   $.get('posts.json')
   .then(function(posts) {
-    console.log(posts);
+    // console.log(posts);
     return $.get('tags.json');
   })
   .then(function(posts) {
-    console.log(posts);
+    // console.log(posts);
     return $.get('users.json');
   })
   .then(function(posts) {
-    console.log(posts);
+    // console.log(posts);
   });
 });
+
+
+window.onload = function() {
+  genWrap(function* () {
+    var posts = yield $.get('posts.json');
+    console.log(posts);
+    var tags = yield $.get('tags.json');
+    console.log(tags);
+    var users = yield $.get('users.json');
+    console.log(users);
+  });
+  function genWrap(generator) {
+    var gen = generator();
+    function handle(yielded) {
+      if(!yielded.done) {
+        yielded.value.then(function(data) {
+          return handle(gen.next(data));
+        })
+      }
+    }
+    return handle(gen.next());
+  }
+}
