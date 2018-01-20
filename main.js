@@ -3,7 +3,7 @@ window.onload = function() {
 
   http.onreadystatechange = function() {
     if(http.readyState == 4 && http.status == 200) {
-      console.log(JSON.parse(http.response));
+      // console.log(JSON.parse(http.response));
     }
   }
 
@@ -13,13 +13,13 @@ window.onload = function() {
 
 $(document).ready(function() {
   function callback(data) {
-    console.log(data);
+    // console.log(data);
   }
   $.get('posts.json', callback);
 
 
   function handleError(jqXHR, textStatus, error) {
-    console.log(error);
+    // console.log(error);
   }
 
   $.ajax({
@@ -30,7 +30,7 @@ $(document).ready(function() {
   });
 
   function callbackPosts(data) {
-    console.log(data);
+    // console.log(data);
     $.ajax({
       type: 'GET',
       url: 'tags.json',
@@ -40,14 +40,66 @@ $(document).ready(function() {
   }
 
   function callbackTags(data) {
-    console.log(data);
+    // console.log(data);
     $.ajax({
       type: 'GET',
       url: 'users.json',
       success: function(data) {
-        console.log(data);
+        // console.log(data);
       },
       error: handleError
     });
   }
+});
+
+
+window.onload = function() {
+  function get(url) {
+    return new Promise(function(resolve, reject) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.open('GET', url, true);
+      xhttp.onload = function() {
+        if(xhttp.status == 200) {
+          resolve(JSON.parse(xhttp.response));
+        } else {
+          reject(xhttp.statusText);
+        }
+      };
+      xhttp.onerror = function() {
+        reject(xhttp.statusText);
+      };
+      xhttp.send();
+    });
+  }
+
+  var promise = get('posts.json')
+  .then(function(posts) {
+    console.log(posts);
+    return get('tags.json');
+  })
+  .then(function(tags) {
+    console.log(tags);
+    return get('users.json');
+  })
+  .then(function(users) {
+    console.log(users);
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+}
+
+$(document).ready(function() {
+  $.get('posts.json')
+  .then(function(posts) {
+    console.log(posts);
+    return $.get('tags.json');
+  })
+  .then(function(posts) {
+    console.log(posts);
+    return $.get('users.json');
+  })
+  .then(function(posts) {
+    console.log(posts);
+  });
 });
