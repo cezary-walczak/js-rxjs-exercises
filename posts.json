@@ -1,0 +1,10 @@
+{
+  "posts": [
+    {
+      "content": "hello"
+    },
+    {
+      "content": "world!"
+    }
+  ]
+}
