@@ -67,3 +67,19 @@ subject.subscribe({
 
 subject.next('new data piece');
 subject.complete();
+
+
+var observableFilter = Rx.Observable.interval(1000);
+
+observableFilter
+.filter(function(value) {
+  return value % 2 == 0;
+})
+.subscribe({
+  next: function(value) {
+    console.log(value);
+  },
+  error: function() {
+    console.log('Error: ', error);
+  }
+});
