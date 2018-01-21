@@ -83,3 +83,19 @@ observableFilter
     console.log('Error: ', error);
   }
 });
+
+
+var input = document.querySelector('input');
+var observableDebounce = Rx.Observable.fromEvent(input, 'input');
+
+observableDebounce
+.map(function(event) {
+  return event.target.value;
+})
+.debounceTime(500) // emit event after two second of inaction
+.distinctUntilChanged() // value of emision is not equal to input value
+.subscribe({
+  next: function(value) {
+    console.log(value);
+  }
+})
