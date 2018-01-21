@@ -43,3 +43,27 @@ observableInterval
   })
   .throttleTime(2000)
   .subscribe(observer);
+
+
+var subject = new Rx.Subject();
+
+subject.subscribe({
+  next: function(value) {
+    console.log(value);
+  },
+  error: function(error) {
+    console.log(error);
+  },
+  complete: function() {
+    console.log('complete');
+  }
+})
+
+subject.subscribe({
+  next: function(value) {
+    console.log(value);
+  }
+})
+
+subject.next('new data piece');
+subject.complete();
