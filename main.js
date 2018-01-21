@@ -150,3 +150,17 @@ observableMergeMap1.mergeMap(
     span.textContent = combinedValue;
   }
 )
+
+
+var observableSwitchMap1 = Rx.Observable.fromEvent(btn, 'click');
+var observableSwitchMap2 = Rx.Observable.interval(1000);
+
+observableSwitchMap1
+.switchMap(function(event) { //switch values between inner and outer observables and cancel old subscriptions
+  return observableSwitchMap2
+})
+.subscribe(
+  function(value) {
+    console.log(value);
+  }
+);
