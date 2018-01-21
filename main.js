@@ -115,3 +115,17 @@ observableReduceScan
     console.log(value);
   }
 })
+
+
+var input = document.querySelector('input');
+var observablePluck = Rx.Observable.fromEvent(input, 'input');
+
+observablePluck
+.pluck('target', 'value') // pass properties of object as strings
+.debounceTime(500)
+.distinctUntilChanged()
+.subscribe({
+  next: function(value) {
+    console.log(value);
+  }
+});
