@@ -29,3 +29,17 @@ var subscription = Rx.Observable.create(function(obs) {
 setTimeout(function() {
   subscription.unsubscribe();
 }, 5000);
+
+
+var observableInterval = Rx.Observable.interval(1000);
+var observerInterval = {
+  next: function(value) {
+    console.log(value);
+  }
+}
+observableInterval
+  .map(function(value) {
+    return value*2;
+  })
+  .throttleTime(2000)
+  .subscribe(observer);
