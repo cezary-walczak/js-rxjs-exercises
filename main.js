@@ -121,7 +121,7 @@ var input = document.querySelector('input');
 var observablePluck = Rx.Observable.fromEvent(input, 'input');
 
 observablePluck
-.pluck('target', 'value') // pass properties of object as strings
+.pluck('target', 'value') // pass properties of object as strings (shorter than .map())
 .debounceTime(500)
 .distinctUntilChanged()
 .subscribe({
@@ -129,3 +129,24 @@ observablePluck
     console.log(value);
   }
 });
+
+
+var input1 = document.querySelector('#input1');
+var input2 = document.querySelector('#input2');
+var span = document.querySelector('span');
+
+var observableMergeMap1 = Rx.Observable.fromEvent(input1, 'input');
+var observableMergeMap2 = Rx.Observable.fromEvent(input2, 'input');
+
+observableMergeMap1.mergeMap(
+  function(event1) {
+    return observableMergeMap2.map(
+      event2 => event1.target.value + ' ' + event2.target.value
+    )
+  }
+)
+.subscribe(
+  function(combinedValue) {
+    span.textContent = combinedValue;
+  }
+)
