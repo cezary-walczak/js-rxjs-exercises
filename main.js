@@ -99,3 +99,19 @@ observableDebounce
     console.log(value);
   }
 })
+
+
+var observableReduceScan = Rx.Observable.of(1, 2, 3, 4, 5);
+
+observableReduceScan
+// .reduce(function(total, currentValue) {
+//   return total + currentValue; // print end value
+// }, 0) // starting point
+.scan(function(total, currentValue) {
+  return total + currentValue; // print new value on each step
+}, 0) // starting point
+.subscribe({
+  next: function(value) {
+    console.log(value);
+  }
+})
